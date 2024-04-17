@@ -1,0 +1,60 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    exclude:
+    - docker/*
+    - 'deploy-app.yaml'
+    - 'README.md'
+
+pool:
+  name: Default # change ADO Agent Pool name to suit your environment if required.
+  demands:
+  - agent.name -equals self-hosted # change agent name equals to suit your environment if required.
+
+# Fill variables with your values
+variables:
+- name: webAppName
+  value: 'app-ado-uks-demo'
+- name: azureServiceConnection
+  value: 'AzureSubWorkloadFederationId'
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 7.0.x'
+  inputs:
+    packageType: 'sdk'
+    version: '7.0.x'
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build .NET App'
+  inputs:
+    command: 'build'
+    projects: 'app/app-ado-uks-demo/*.csproj'
+    arguments: '--configuration Release'
+
+- task: DotNetCoreCLI@2
+  displayName: Publish
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: 'app/app-ado-uks-demo/*.csproj'
+    arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+
+- task: AzureWebApp@1
+  displayName: 'Deploy to Azure Web App'
+  inputs:
+    azureSubscription: $(azureServiceConnection)
+    appType: 'webApp'
+    appName: $(webAppName)
+    package: '$(Build.ArtifactStagingDirectory)/*.zip'
+    deploymentMethod: runFromPackage

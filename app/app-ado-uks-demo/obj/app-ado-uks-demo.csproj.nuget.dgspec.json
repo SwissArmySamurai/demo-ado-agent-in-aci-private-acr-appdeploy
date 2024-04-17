@@ -1,0 +1,56 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Repos\\ADO%20Agent\\app\\app-ado-uks-demo\\app-ado-uks-demo.csproj": {}
+  },
+  "projects": {
+    "C:\\Repos\\ADO%20Agent\\app\\app-ado-uks-demo\\app-ado-uks-demo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Repos\\ADO%20Agent\\app\\app-ado-uks-demo\\app-ado-uks-demo.csproj",
+        "projectName": "app-ado-uks-demo",
+        "projectPath": "C:\\Repos\\ADO%20Agent\\app\\app-ado-uks-demo\\app-ado-uks-demo.csproj",
+        "packagesPath": "C:\\Users\\dan.rios\\.nuget\\packages\\",
+        "outputPath": "C:\\Repos\\ADO%20Agent\\app\\app-ado-uks-demo\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\dan.rios\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
