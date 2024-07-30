@@ -1,6 +1,9 @@
 > [!TIP]
 > Be sure to checkout my blog post on this which provides a comprehensive deep dive, insights, and step by step guide [here](https://rios.engineer/private-azure-devops-agent-azure-container-instance-with-private-azure-container-registry).
 
+> [!NOTE]
+> Microsoft have announced Managed DevOps Pools coming soon which will make this process a lot more seamless, you can read more [here](https://devblogs.microsoft.com/engineering-at-microsoft/managed-devops-pools-the-origin-story/?wt.mc_id=MVP_319025)
+
 # Introduction
 
 This repository will enable and showcase how you can deploy a fully private Azure DevOps self hosted agent on an Azure Container Instance, pulled from a fully private Azure Container Registry and deploy to an App Service behind a Private Endpoint.
@@ -35,18 +38,13 @@ It's advised to read the blog for further information but here is a quick deploy
 5. Deploy the Azure resources
 
 ```bash
-az deployment sub create -l uksouth -n deploy -f main.bicep -p main.bicepparam
+az deployment sub create -l uksouth -n deploy -f main.bicep -p main.bicepparam -p AZP_TOKEN=YOUR_ADO_PAT
 ```
 
-6. Connect to the Azure Container Instance terminal & run (or make a commit to the Dockerfile)
-
-```bash
-az login --identity
-az acr task run --resource-group rg-ado-uks-demo -r YOURACR --name adoAgentBuildTask
-```
+6. Add a comment to the `Dockerfile` file to trigger the acrBuildTask 
 
 7. Uncomment lines 45 to 51 in the `aci.bicep` module file and save
-8. Amend the `aciImage` parameter in the `main.bicepparam` file to from `'emberstack/azure-pipelines-agent'` to `'${acrName}.azurecr.io/ado-agent:latest'`
+8. Amend the `aciImage` parameter in the `main.bicepparam` file to from `'mcr.microsoft.com/azuredocs/aci-helloworld:latest'` to `'${acrName}.azurecr.io/ado-agent:latest'`
 9. Redeploy the Bicep template again using the commands from step 5 to pull the private ACR image into the ACI
 
 > [!NOTE]  
