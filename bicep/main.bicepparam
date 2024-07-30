@@ -5,7 +5,7 @@ using './main.bicep'
 param location = 'uksouth'
 param rgName = 'rg-ado-uks-demo'
 param rgWebAppName = 'rg-ado-uks-webapp-demo'
-param acrName = '' // needs to be unique 
+param acrName = '' // Fill this out. It needs to be globally unique 
 param acrSku = 'Premium'
 param aciName = 'ado-agent'
 param tags = {
@@ -33,7 +33,7 @@ param AZP_NAME = 'self-hosted' // Leave this value unless you're editing the mod
 param AZP_POOL = 'Default' // Leave this value unless you're editing the modules to change the pool name
 param AZP_TOKEN = 'ADO_PAT' // enter your ADO PAT here. For anything other than lab/demo move this value to your ADO library/keyvault 
 param AZP_URL = 'https://dev.azure.com/ADO_ORG'
-param aciImage = 'emberstack/azure-pipelines-agent' // change this on second deployment pass. See () for more info. 
-// placeholder image: emberstack/azure-pipelines-agent private image: ${acrName}.azurecr.io/ado-agent:latest 
+param aciImage = 'mcr.microsoft.com/azuredocs/aci-helloworld:latest' // change this on second deployment pass. See (https://rios.engineer/private-azure-devops-agent-azure-container-instance-with-private-azure-container-registry) for more info. 
+// placeholder public image. Change parameter to: ${acrName}.azurecr.io/ado-agent:latest on second deployment pass
 // Git Repo 
 param gitRepoUrl = 'https://dev.azure.com/ADO_ORG/ADO_PROJECT/_git/REPO_NAME#main' // change to your ADO repo URL
