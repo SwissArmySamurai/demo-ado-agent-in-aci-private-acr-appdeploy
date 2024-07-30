@@ -31,7 +31,7 @@ param webPlanTier = 'Basic'
 // ADO Agent
 param AZP_NAME = 'self-hosted' // Leave this value unless you're editing the modules to change the agent name
 param AZP_POOL = 'Default' // Leave this value unless you're editing the modules to change the pool name
-param AZP_TOKEN = 'ADO_PAT' // enter your ADO PAT here. For anything other than lab/demo move this value to your ADO library/keyvault 
+param AZP_TOKEN = 'ADO_PAT' // enter your ADO PAT here or use the override CLI parameter cmdlet. For anything other than lab/demo move this value to your ADO library/keyvault 
 param AZP_URL = 'https://dev.azure.com/ADO_ORG'
 param aciImage = 'mcr.microsoft.com/azuredocs/aci-helloworld:latest' // change this on second deployment pass. See (https://rios.engineer/private-azure-devops-agent-azure-container-instance-with-private-azure-container-registry) for more info. 
 // placeholder public image. Change parameter to: ${acrName}.azurecr.io/ado-agent:latest on second deployment pass
