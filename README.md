@@ -1,5 +1,5 @@
 > [!TIP]
-> Be sure to checkout my blog post on this which provides a comprehensive deep dive, insights, and step by step guide [here](https://rios.engineer/private-azure-devops-agent-azure-container-instance-with-private-azure-container-registry).
+> Be sure to checkout my blog post on this which provides a comprehensive deep dive, insights, and step by step guide [here](https://rios.engineer/azure-devops-agent-azure-container-instance-with-private-azure-container-registry/).
 
 > [!NOTE]
 > Microsoft have announced Managed DevOps Pools coming soon which will make this process a lot more seamless, you can read more [here](https://devblogs.microsoft.com/engineering-at-microsoft/managed-devops-pools-the-origin-story/?wt.mc_id=MVP_319025)
