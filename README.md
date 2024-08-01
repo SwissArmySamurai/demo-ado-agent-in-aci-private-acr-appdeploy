@@ -46,6 +46,7 @@ az deployment sub create -l uksouth -n deploy -f main.bicep -p main.bicepparam -
 7. Uncomment lines 45 to 51 in the `aci.bicep` module file and save
 8. Amend the `aciImage` parameter in the `main.bicepparam` file to from `'mcr.microsoft.com/azuredocs/aci-helloworld:latest'` to `'${acrName}.azurecr.io/ado-agent:latest'`
 9. Redeploy the Bicep template again using the commands from step 5 to pull the private ACR image into the ACI
+10. Lastly, trigger the App Deploy pipeline in ADO to deploy the web app using the private agent 
 
 > [!NOTE]  
 > Feel free to fork this repo and customise the Bicep code as you see fit if you feel comfortable doing so. I have hard-coded some values for simplicity of the demo (e.g. repository name / tag).
